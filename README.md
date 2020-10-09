@@ -20,4 +20,4 @@ Run `ng serve` and `nodemon` on the root server. application will be running on 
 
 ## Note:
 
-Before running the application must create database "customer-details-mapp" and collection name "customers"
+Before running the application must create database name "customer-details-mapp" and collection name "customers"
