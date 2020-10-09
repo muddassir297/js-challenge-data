@@ -1,0 +1,55 @@
+<div class="text-center">
+    <div class="row">        
+        <div class="col-11">
+            <h2>Customer List</h2>
+        </div>
+        <div class="col-1">
+            <span class="float-right">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formleModal" (click)="resetForm()">
+                    <span class="fa fa-plus"></span>
+                </button>
+            </span>
+        </div>
+    </div>    
+    <ul class="list-group" *ngFor="let customer of customers">
+        <li class="list-group-item d-flex justify-content-between align-items-center">          
+            <div class="col-10 cursor-style" [routerLink]="['/customer-detail',customer.customerID]" > 
+                <p class="h5 float-left">{{customer.fname}} {{customer.lname}}</p>
+            </div>
+            <div class="col-2">
+                <span class="pad-btn float-right">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmBackdrop" (click)="getCustomerId(customer.customerID)">
+                        <span class="fa fa-trash"></span>
+                    </button>
+                </span>
+                <span class="pad-btn float-right">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formleModal" (click)="getCustomerById(customer.customerID)">
+                        <span class="fa fa-edit"></span>
+                    </button>
+                </span>
+            </div>
+        </li>        
+      </ul>
+</div>
+
+<app-modalform #formleModal (modalformData)="receivedFormData($event)" [customerFormData] ="customerFormData"></app-modalform>
+<!-- Modal Confirm-->
+<div class="modal fade" id="confirmBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" #confirmModal>
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p class="float-left">Do you really want to delete the cutomer?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" id="confirmModal" (click)="deleteCustomer()">Delete</button>
+    </div>
+    </div>
+</div>
+</div>

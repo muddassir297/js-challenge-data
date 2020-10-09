@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-2">
+        <span class="cursor-style" routerLink="/customer-list">
+            <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-chevron-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+            </svg>
+        </span>        
+    </div>
+    <div class="col-8 text-center" *ngIf="customer">
+        <h2>{{customer.fname}} Detail</h2>
+    </div>
+    <div class="col-2">
+        <span class="pad-btn float-right">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formleModal" (click)="getCustomerById(customer.customerID)">
+                <span class="fa fa-edit"></span>
+            </button>
+        </span>
+    </div>
+</div>
+<div class="row margin-top" *ngIf="customer">
+    <div class="col-6 text-right">
+        <h5>Name:</h5>
+    </div>    
+    <div class="col-6 text-left">
+        <h5>{{customer.fname}} {{customer.lname}}</h5>
+    </div>
+    <div class="col-6 text-right">
+        <h5>Gender:</h5>
+    </div>    
+    <div class="col-6 text-left">
+        <h5>{{getGender(customer.gender)}}</h5>
+    </div>
+    <div class="col-6 text-right">
+        <h5>Birthday:</h5>
+    </div>    
+    <div class="col-6 text-left" *ngIf="customer.birthday">
+        <h5>{{getFormatDate(customer.birthday,'yyyy-MM-dd')}}</h5>
+    </div>
+    <div class="col-6 text-right">
+        <h5>Last Contact:</h5>
+    </div>    
+    <div class="col-6 text-left" *ngIf="customer.lastContact">
+        <h5>{{getFormatDate(customer.lastContact,'yyyy-MM-dd')}}</h5>
+    </div>
+    <div class="col-6 text-right">
+        <h5>Life Time Value:</h5>
+    </div>    
+    <div class="col-6 text-left">
+        <h5>{{customer.customerLifetimeValue}}</h5>
+    </div>
+</div>
+<app-modalform #formleModal [customerFormData] ="customerFormData"></app-modalform>

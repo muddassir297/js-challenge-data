@@ -1,0 +1,70 @@
+<!-- Modal Form-->
+<div class="modal fade" id="formleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="customerFormData">
+    <div class="modal-dialog">
+      <form (ngSubmit)="onSubmit()" #customerForm="ngForm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Customer</h5>
+          <button type="button" class="close" data-dismiss="modal" #closebutton aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">          
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input autocomplete="off" appAlphabetonly type="text" class="form-control" id="fname" required [(ngModel)]="customerFormData.fname" name="fname" #fname="ngModel">
+            <div [hidden]="fname.valid || fname.pristine" class="alert alert-danger">
+              First Name is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input autocomplete="off" appAlphabetonly type="text" class="form-control" id="lname" required [(ngModel)]="customerFormData.lname" name="lname" #lname="ngModel">
+            <div [hidden]="lname.valid || lname.pristine" class="alert alert-danger">
+              Last Name is required
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-6">
+              <label for="birthday">Birth day</label>
+              <input autocomplete="off" type="text" class="form-control" readonly id="birthday" required [(ngModel)]="customerFormData.birthday" (click)="bd.toggle()" name="birthday" 
+              #birthday="ngModel" ngbDatepicker #bd="ngbDatepicker">
+              <div [hidden]="birthday.valid || birthday.pristine" class="alert alert-danger">
+                Birthday is required
+              </div>
+            </div>
+            <div class="form-group col-6">
+              <label for="lastContact">Last Contact</label>
+              <input autocomplete="off" type="text" class="form-control" readonly id="lastContact" required [(ngModel)]="customerFormData.lastContact" (click)="lc.toggle()" 
+              name="lastContact" #lastContact="ngModel" ngbDatepicker #lc="ngbDatepicker">
+              <div [hidden]="lastContact.valid || lastContact.pristine" class="alert alert-danger">
+                Last contact is required
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-6">
+              <label for="gender" class="display-block">Gender</label>
+              <input autocomplete="off" type="radio" class="margin-right" value="m" required [(ngModel)]="customerFormData.gender" name="gender" #gender="ngModel">Male
+              <input autocomplete="off" type="radio" class="margin-right margin-left" value="w" required [(ngModel)]="customerFormData.gender" name="gender">Female
+              <div [hidden]="gender.valid || gender.pristine" class="alert alert-danger">
+                Gender is required
+              </div>
+            </div>
+            <div class="form-group col-6">
+              <label for="customerLifetimeValue">Life Time Value</label>
+              <input autocomplete="off" type="number" class="form-control" id="customerLifetimeValue" required [(ngModel)]="customerFormData.customerLifetimeValue" name="customerLifetimeValue" #customerLifetimeValue="ngModel">
+              <div [hidden]="customerLifetimeValue.valid || customerLifetimeValue.pristine" class="alert alert-danger">
+                Life time value is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success"  id="closeModal">Save</button>
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
