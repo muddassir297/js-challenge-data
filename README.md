@@ -17,3 +17,7 @@ Run `mongoimport --db customer-details-mapp --collection customers --drop --file
 ## Run Application
 
 Run `ng serve` and `nodemon` on the root server. application will be running on `http://localhost:4200`.
+
+## Note:
+
+Before running the application must create database "customer-details-mapp" and collection name "customers"
