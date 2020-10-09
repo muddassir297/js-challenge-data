@@ -1,27 +1,19 @@
 # CustomerDetailsMapp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.1.
+This project is developed using Angular10.0.1, Express 4.17.1 and Mongoose 5.10.8.
 
-## Development server
+## Prerequisite
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Node and MongoDb must be up and running in the local machine.
 
-## Code scaffolding
+## Install Dependency
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `npm install --save` in the root folder and also in the "server" folder to install all the dependencies.
 
-## Build
+## Upload default data (Optional)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `mongoimport --db customer-details-mapp --collection customers --drop --file ~/path/to/file/customers-sample.json --jsonArray`.
 
-## Running unit tests
+## Run Application
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Run `ng serve` and `nodemon` on the root server. application will be running on `http://localhost:4200`.
